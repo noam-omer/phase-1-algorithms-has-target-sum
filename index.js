@@ -1,5 +1,20 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = {};
+  for (let i = 0; i < array.length; i++){
+    const complement = target - array[i];
+    if (seenNumbers[complement]) return true;
+    seenNumbers[array[i]] = true;
+  }
+ return false;
+  /*
+  for (let i = 0; i < array.length; i++){
+    for (let j = i+1; j < array.length; j++){
+      console.log("i " + array[i] + ' j ' + array[j])
+      if (array[i] + array[j] === target) return true
+    }   
+  }
+    return false
+   */ 
 }
 
 /* 
@@ -29,6 +44,7 @@ if (require.main === module) {
 
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
+
 }
 
 module.exports = hasTargetSum;
